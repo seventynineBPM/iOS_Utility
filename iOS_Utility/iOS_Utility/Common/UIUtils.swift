@@ -87,7 +87,6 @@ class UIUtils {
                 closeViewController.navigationController?.popViewController(animated: true)
                 closeViewController.dismiss(animated: false, completion: nil)
             }
-            NSLog("OK Pressed")
         }
         alertController.addAction(okAction)
         if let topVC = UIApplication.topViewController() {  // 앨럿띄우기
