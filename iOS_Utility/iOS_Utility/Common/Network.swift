@@ -19,14 +19,14 @@ class NetworkAlamofire {
                        completionHandler: @escaping (Bool, Any?) -> ()) {
         
 //        var headers = Alamofire
-        var headers = Alamofire.SessionManager.defaultHTTPHeaders
+        var headers = Alamofire.HTTPHeaders()
         header?.forEach({ (arg) in
             headers[arg.key] = arg.value
         })
         
-        let manager = Alamofire.SessionManager()
+        let manager = Alamofire.Session()
         manager.session.configuration.timeoutIntervalForRequest = TimeInterval(timeout)
-        manager.request(api, method: method, parameters: params, encoding: paramEncoding, headers: headers).responseJSON { (response: DataResponse<Any>) in
+        manager.request(api, method: method, parameters: params, encoding: paramEncoding, headers: headers).responseJSON { (response: AFDataResponse<Any>) in
             switch(response.result) {
             case.success(let data):
                 if let dataDic = data as? [String:Any] {
