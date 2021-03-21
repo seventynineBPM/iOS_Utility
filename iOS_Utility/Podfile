@@ -11,6 +11,8 @@ target 'iOS_Utility' do
     pod 'RxSwift'
     pod 'RxCocoa'
     pod 'CryptoSwift'
+    pod 'Charts'
+    pod 'ChartsRealm'
 
   target 'iOS_UtilityTests' do
     inherit! :search_paths

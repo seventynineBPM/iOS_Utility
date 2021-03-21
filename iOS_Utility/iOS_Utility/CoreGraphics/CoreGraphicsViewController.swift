@@ -29,6 +29,7 @@ class CoreGraphicsViewController: UIViewController {
         setDrawingRectanglesView()
         setNextDrawingButton()
         setDrawingImageView()
+        setArcFooterView()
     }
 
     // Drawing
@@ -38,8 +39,10 @@ class CoreGraphicsViewController: UIViewController {
     lazy var drawingImageView: UIImageView = { return UIImageView() }()
     lazy var drawingNextButton: UIButton = { return UIButton() }()
     
+    lazy var arcFooterView: CustomFooter = { return CustomFooter() }()
+    
     @objc func drawNext() {
-        let size = 7
+        let size = 8
         
         drawingNextButton.tag = (drawingNextButton.tag + 1) % size
         
@@ -58,6 +61,8 @@ class CoreGraphicsViewController: UIViewController {
             drawLinesInDrawingImageView()
         case 6:
             drawImagesAndTextInDrawingImageView()
+        case 7:
+            drawArcsINDrawingImageView()
         default:
             drawRectInDrawingImageView()
         }
@@ -316,6 +321,67 @@ private extension CoreGraphicsViewController {
         }
         
         drawingImageView.image = img
+    }
+    
+    func drawArcsINDrawingImageView() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let center = CGPoint(x: 0, y: 0)
+        
+        let img = renderer.image { ctx in
+            ctx.cgContext.translateBy(x: 256, y: 256)
+            
+            // background cicle
+            ctx.cgContext.setFillColor(UIColor.lightGray.cgColor)
+            ctx.cgContext.addArc(center: center, radius: CGFloat(128), startAngle: .pi * (0), endAngle: .pi * 2, clockwise: false)
+            ctx.cgContext.fillPath()
+            
+            ctx.cgContext.setFillColor(UIColor.white.cgColor)
+            ctx.cgContext.addArc(center: center, radius: CGFloat(48), startAngle: .pi * (0), endAngle: .pi * 2, clockwise: false)
+            ctx.cgContext.fillPath()
+            
+            // arc
+            let startAngle = CGFloat.pi * (3/2)
+            let endAngle = CGFloat.pi * (3/4)
+            
+            ctx.cgContext.setStrokeColor(UIColor.blue.cgColor)
+            ctx.cgContext.setLineWidth(80)
+            ctx.cgContext.addArc(center: center, radius: CGFloat(88), startAngle: startAngle, endAngle: endAngle, clockwise: false)
+            
+            ctx.cgContext.drawPath(using: .stroke)
+            
+            // outline
+//            let angleDifference: CGFloat = 2 * CGFloat.pi - startAngle + endAngle
+            
+            // draw the outer arc
+            let outlinePath = UIBezierPath(arcCenter: center, radius: CGFloat(128), startAngle: startAngle, endAngle: endAngle, clockwise: true)
+            
+            // draw the inner arc
+            outlinePath.addArc(withCenter: center, radius: CGFloat(48), startAngle: endAngle, endAngle: startAngle, clockwise: false)
+            
+            // close the path
+            outlinePath.close()
+            
+            ctx.cgContext.setStrokeColor(UIColor.orange.cgColor)
+            outlinePath.lineWidth = CGFloat(1)
+            outlinePath.stroke()
+            
+        }
+        
+        drawingImageView.image = img
+    }
+    
+    func setArcFooterView() {
+        arcFooterView.frame = CGRect(x: drawingScroll.frame.minX,
+                                     y: drawingScroll.contentSize.height + CGFloat(12),
+                                             width: UIScreen.main.bounds.width,
+                                             height: CGFloat(80))
+        updateContentSizeDrawingScroll { () -> CGFloat in
+            drawingScroll.contentSize.width > arcFooterView.frame.width ? drawingScroll.contentSize.width : arcFooterView.frame.width
+        } height: { () -> CGFloat in
+            arcFooterView.frame.maxY
+        }
+        drawingScroll.addSubview(arcFooterView)
     }
 }
 
