@@ -34,6 +34,7 @@
 		D417E37DD14559D9CD42156F /* Pods_iOS_Utility_iOS_UtilityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9470FCF3213864EC84A08F6A /* Pods_iOS_Utility_iOS_UtilityUITests.framework */; };
 		E75A07089DF52D699E045950 /* Pods_iOS_Utility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23112380AE2179B65C3B014E /* Pods_iOS_Utility.framework */; };
 		F25B57E725B6A7F400481288 /* StarshipBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25B57E625B6A7F400481288 /* StarshipBackgroundView.swift */; };
+		F285470E2643ACE900B0A2FE /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F285470D2643ACE900B0A2FE /* Formatter.swift */; };
 		F2F76E7F25CBECE4002CDDA7 /* CustomFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F76E7E25CBECE4002CDDA7 /* CustomFooter.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		AFF3D17923F4357F000576FB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B4C72A44D89BE2FB6A83F069 /* Pods-iOS_Utility.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Utility.release.xcconfig"; path = "Target Support Files/Pods-iOS_Utility/Pods-iOS_Utility.release.xcconfig"; sourceTree = "<group>"; };
 		F25B57E625B6A7F400481288 /* StarshipBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipBackgroundView.swift; sourceTree = "<group>"; };
+		F285470D2643ACE900B0A2FE /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		F2F76E7E25CBECE4002CDDA7 /* CustomFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFooter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -260,6 +262,7 @@
 				AF6D236A23F5865700E59DA3 /* UIUtils.swift */,
 				AF6D236C23F58FAB00E59DA3 /* MapAppUtils.swift */,
 				AF6D236E23F6C95C00E59DA3 /* Network.swift */,
+				F285470D2643ACE900B0A2FE /* Formatter.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				AF5A5DBB23DB185100AD9DB1 /* ViewController.swift in Sources */,
 				AFD3727B245C0C6800F90865 /* SlideMenuViewController.swift in Sources */,
 				AF6D236D23F58FAB00E59DA3 /* MapAppUtils.swift in Sources */,
+				F285470E2643ACE900B0A2FE /* Formatter.swift in Sources */,
 				AF7A8CFC2455FDA5000856E6 /* LeftMenuViewController.swift in Sources */,
 				AFD3727D245C166400F90865 /* RightMenuViewController.swift in Sources */,
 				AFD3727F245C465D00F90865 /* SlideMenuOptions.swift in Sources */,
